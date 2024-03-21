@@ -90,7 +90,7 @@ public class ComputerGuessesPanel extends JPanel {
         upperBound = 1000;
         numGuesses = 0;
         lastGuess = (lowerBound + upperBound + 1) / 2;
-        guessMessage.setText("I guess " + lastGuess + ".");
+       // guessMessage.setText("I guess " + lastGuess + ".");
     }
      void setUpperBound(){
         this.upperBound = Math.min(this.upperBound, this.lastGuess);
@@ -101,8 +101,9 @@ public class ComputerGuessesPanel extends JPanel {
         lowerBound = Math.max(lowerBound, lastGuess + 1);
         lastGuess = (lowerBound + upperBound + 1) / 2;
         numGuesses += 1;
-
-
+    }
+    public int getLastGuess(){
+        return this.lastGuess;
     }
 
 

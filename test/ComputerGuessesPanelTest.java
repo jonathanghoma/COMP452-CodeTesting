@@ -12,7 +12,8 @@ public class ComputerGuessesPanelTest {
     @Test
     void testMinGuess(){
         ComputerGuessesPanel toTest = new ComputerGuessesPanel();
+        toTest.setInitial();
         toTest.setLowerBound();
-        toTest.setLowerBound();
+        assertEquals(500, toTest.getLastGuess());
     }
 }
