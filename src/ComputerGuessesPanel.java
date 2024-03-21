@@ -19,7 +19,7 @@ public class ComputerGuessesPanel extends JPanel {
     // They are updated after each guess is made
     private int upperBound; // correct number is <= upperBound
     private int lowerBound; // correct number is >= lowerBound
-
+    private JLabel guessMessage;
     public ComputerGuessesPanel(JPanel cardsPanel, Consumer<GameResult> gameFinishedCallback){
         numGuesses = 0;
         upperBound = 1000;
@@ -27,7 +27,7 @@ public class ComputerGuessesPanel extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        JLabel guessMessage = new JLabel("I guess ___.");
+        guessMessage = new JLabel("I guess ___.");
         guessMessage.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.add(guessMessage);
         guessMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -41,11 +41,7 @@ public class ComputerGuessesPanel extends JPanel {
 
         JButton lowerBtn = new JButton("Lower");
         lowerBtn.addActionListener(e -> {
-            upperBound = Math.min(upperBound, lastGuess);
-
-            lastGuess = (lowerBound + upperBound + 1) / 2;
-            numGuesses += 1;
-            guessMessage.setText("I guess " + lastGuess + ".");
+            setUpperBound();
         });
         this.add(lowerBtn);
         lowerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -68,11 +64,7 @@ public class ComputerGuessesPanel extends JPanel {
 
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
-            lowerBound = Math.max(lowerBound, lastGuess + 1);
-
-            lastGuess = (lowerBound + upperBound + 1) / 2;
-            numGuesses += 1;
-            guessMessage.setText("I guess " + lastGuess + ".");
+            setLowerBound();
         });
         this.add(higherBtn);
         higherBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,6 +80,18 @@ public class ComputerGuessesPanel extends JPanel {
                 guessMessage.setText("I guess " + lastGuess + ".");
             }
         });
+    }
+    void setUpperBound(){
+        upperBound = Math.min(upperBound, lastGuess);
+        lastGuess = (lowerBound + upperBound + 1) / 2;
+        numGuesses += 1;
+        guessMessage.setText("I guess " + lastGuess + ".");
+    }
+    void setLowerBound(){
+        lowerBound = Math.max(lowerBound, lastGuess + 1);
+        lastGuess = (lowerBound + upperBound + 1) / 2;
+        numGuesses += 1;
+        guessMessage.setText("I guess " + lastGuess + ".");
     }
 
 }
