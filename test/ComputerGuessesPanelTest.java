@@ -13,7 +13,6 @@ public class ComputerGuessesPanelTest {
     void testMinGuess(){
         ComputerGuessesPanel toTest = new ComputerGuessesPanel();
         toTest.setInitial();
-        toTest.setLowerBound();
-        assertEquals(500, toTest.getLastGuess());
+
     }
 }

@@ -102,8 +102,11 @@ public class ComputerGuessesPanel extends JPanel {
         lastGuess = (lowerBound + upperBound + 1) / 2;
         numGuesses += 1;
     }
-    public int getLastGuess(){
-        return this.lastGuess;
+    void setEqual(){
+        
+    }
+    public int getNumGuesses(){
+        return this.numGuesses;
     }
 
 
