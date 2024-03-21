@@ -43,6 +43,7 @@ public class ComputerGuessesPanel extends JPanel {
         JButton lowerBtn = new JButton("Lower");
         lowerBtn.addActionListener(e -> {
             setUpperBound();
+            guessMessage.setText("I guess " + lastGuess + ".");
         });
         this.add(lowerBtn);
         lowerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -66,6 +67,7 @@ public class ComputerGuessesPanel extends JPanel {
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
             setLowerBound();
+            guessMessage.setText("I guess " + lastGuess + ".");
         });
         this.add(higherBtn);
         higherBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -73,27 +75,39 @@ public class ComputerGuessesPanel extends JPanel {
 
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent e) {
-                numGuesses = 0;
+                setInitial();
+                /*numGuesses = 0;
                 upperBound = 1000;
                 lowerBound = 1;
 
                 lastGuess = (lowerBound + upperBound + 1) / 2;
-                guessMessage.setText("I guess " + lastGuess + ".");
+                guessMessage.setText("I guess " + lastGuess + ".");*/
             }
         });
     }
-
-    void setUpperBound(){
+    void setInitial(){
+        lowerBound = 0;
+        upperBound = 1000;
+        numGuesses = 0;
+        lastGuess = (lowerBound + upperBound + 1) / 2;
+       // guessMessage.setText("I guess " + lastGuess + ".");
+    }
+     void setUpperBound(){
         this.upperBound = Math.min(this.upperBound, this.lastGuess);
         this.lastGuess = (this.lowerBound + this.upperBound + 1) / 2;
         this.numGuesses += 1;
-        this.guessMessage.setText("I guess " + this.lastGuess + ".");
     }
     void setLowerBound(){
         lowerBound = Math.max(lowerBound, lastGuess + 1);
         lastGuess = (lowerBound + upperBound + 1) / 2;
         numGuesses += 1;
-        guessMessage.setText("I guess " + lastGuess + ".");
     }
+    void setEqual(){
+        
+    }
+    public int getNumGuesses(){
+        return this.numGuesses;
+    }
+
 
 }
