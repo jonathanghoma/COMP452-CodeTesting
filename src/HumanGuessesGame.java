@@ -11,7 +11,7 @@ public class HumanGuessesGame {
 
     private final int target;
     private int numGuesses;
-    private boolean gameIsDone; // true iff makeGuess has been called with the target value
+    private boolean gameIsDone; // true if makeGuess has been called with the target value
 
     HumanGuessesGame(){
         Random randGen = new Random();
@@ -36,7 +36,7 @@ public class HumanGuessesGame {
         if(value > target){
             return GuessResult.HIGH;
         }
-
+        gameIsDone = true;
         return GuessResult.CORRECT;
     }
 
