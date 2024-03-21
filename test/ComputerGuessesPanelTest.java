@@ -9,4 +9,10 @@ public class ComputerGuessesPanelTest {
         //assertEquals(1, toTest.setLowerBound());
 
     }
+    @Test
+    void testMinGuess(){
+        ComputerGuessesPanel toTest = new ComputerGuessesPanel();
+        toTest.setLowerBound();
+        toTest.setLowerBound();
+    }
 }
