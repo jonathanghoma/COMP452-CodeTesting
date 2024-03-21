@@ -4,7 +4,10 @@ public class HumanGuessesGameTest {
 
     @Test
     void testMaxGuess() {
-        HumanGuessesGame guessGame = new HumanGuessesGame();
+        HumanGuessesGame guessGame = new HumanGuessesGame(501);
+        guessGame.makeGuess(500);
+        guessGame.makeGuess(501);
+        assertEquals(2, guessGame.getNumGuesses());
 
     }
 
