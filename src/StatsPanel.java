@@ -32,6 +32,36 @@ public class StatsPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0,40)));
 
         resultsPanel = new JPanel();
+        makeResultsPanel();
+
+        this.add(Box.createVerticalGlue());
+
+        JButton quit = new JButton("Back to Home");
+        quit.addActionListener(e -> {
+            // See itemStateChanged in https://docs.oracle.com/javase/tutorial/uiswing/examples/layout/CardLayoutDemoProject/src/layout/CardLayoutDemo.java
+            CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+            cardLayout.show(cardsPanel, ScreenID.HOME.name());
+        });
+        this.add(quit);
+        quit.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        this.add(Box.createRigidArea(new Dimension(0,20)));
+
+        this.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent e) {
+                updateResultsPanel();
+            }
+        });
+    }
+
+
+    private void clearResults(){
+        for(JLabel lbl : resultsLabels){
+            lbl.setText("--");
+        }
+    }
+
+    private void makeResultsPanel(){
         resultsLabels = new ArrayList<>();
         resultsPanel.setLayout(new GridLayout(0, 2));
         resultsPanel.add(new JLabel("Guesses"));
@@ -64,34 +94,7 @@ public class StatsPanel extends JPanel {
         resultsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         updateResultsPanel();
 
-        this.add(Box.createVerticalGlue());
-
-        JButton quit = new JButton("Back to Home");
-        quit.addActionListener(e -> {
-            // See itemStateChanged in https://docs.oracle.com/javase/tutorial/uiswing/examples/layout/CardLayoutDemoProject/src/layout/CardLayoutDemo.java
-            CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
-            cardLayout.show(cardsPanel, ScreenID.HOME.name());
-        });
-        this.add(quit);
-        quit.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        this.add(Box.createRigidArea(new Dimension(0,20)));
-
-        this.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent e) {
-                updateResultsPanel();
-            }
-        });
     }
-
-
-    private void clearResults(){
-        for(JLabel lbl : resultsLabels){
-            lbl.setText("--");
-        }
-    }
-
-
 
     private void updateResultsPanel(){
         clearResults();
