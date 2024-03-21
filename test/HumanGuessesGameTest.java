@@ -5,7 +5,7 @@ public class HumanGuessesGameTest {
     @Test
     void testMaxGuess() {
         HumanGuessesGame guessGame = new HumanGuessesGame();
-        
+
     }
 
     @Test
