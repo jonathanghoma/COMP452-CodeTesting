@@ -36,6 +36,7 @@ public class StatsPanel extends JPanel {
         resultsPanel.setLayout(new GridLayout(0, 2));
         resultsPanel.add(new JLabel("Guesses"));
         resultsPanel.add(new JLabel("Games"));
+        //probably take this out into function
         for(int binIndex=0; binIndex<BIN_EDGES.length; binIndex++){
             String binName;
             if(binIndex == BIN_EDGES.length-1){
@@ -89,6 +90,8 @@ public class StatsPanel extends JPanel {
             lbl.setText("--");
         }
     }
+
+
 
     private void updateResultsPanel(){
         clearResults();
