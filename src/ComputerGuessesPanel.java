@@ -20,6 +20,7 @@ public class ComputerGuessesPanel extends JPanel {
     private int upperBound; // correct number is <= upperBound
     private int lowerBound; // correct number is >= lowerBound
     private JLabel guessMessage;
+    public ComputerGuessesPanel(){}
     public ComputerGuessesPanel(JPanel cardsPanel, Consumer<GameResult> gameFinishedCallback){
         numGuesses = 0;
         upperBound = 1000;
@@ -81,11 +82,12 @@ public class ComputerGuessesPanel extends JPanel {
             }
         });
     }
+
     void setUpperBound(){
-        upperBound = Math.min(upperBound, lastGuess);
-        lastGuess = (lowerBound + upperBound + 1) / 2;
-        numGuesses += 1;
-        guessMessage.setText("I guess " + lastGuess + ".");
+        this.upperBound = Math.min(this.upperBound, this.lastGuess);
+        this.lastGuess = (this.lowerBound + this.upperBound + 1) / 2;
+        this.numGuesses += 1;
+        this.guessMessage.setText("I guess " + this.lastGuess + ".");
     }
     void setLowerBound(){
         lowerBound = Math.max(lowerBound, lastGuess + 1);
