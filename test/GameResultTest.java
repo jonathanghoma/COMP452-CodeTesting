@@ -29,4 +29,11 @@ public class GameResultTest {
         GameResult result = new GameResult(true, 1000, guessGame.getNumGuesses());
         assertEquals(1000, result.correctValue);
     }
+    @Test
+    void numGuess() {
+        HumanGuessesGame guessGame = new HumanGuessesGame(1000);
+        guessGame.makeGuess(1000);
+        GameResult result = new GameResult(true, 1000, guessGame.getNumGuesses());
+        assertEquals(1, result.numGuesses);
+    }
 }
