@@ -36,4 +36,10 @@ public class GameResultTest {
         GameResult result = new GameResult(true, 1000, guessGame.getNumGuesses());
         assertEquals(1, result.numGuesses);
     }
+    @Test
+    void numGuess2() {
+        HumanGuessesGame guessGame = new HumanGuessesGame(1000);
+        GameResult result = new GameResult(true, 1000, guessGame.getNumGuesses());
+        assertEquals(0, result.numGuesses);
+    }
 }
